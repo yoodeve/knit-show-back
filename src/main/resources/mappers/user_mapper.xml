@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="knitshow.fos.repository.UserMapper">
+    <resultMap id="userMap" type="knitshow.fos.entity.UserEntity">
+        <id property="userId" column="user_id" />
+        <result property="oauth2Id" column="oauth2_id" />
+        <result property="nickname" column="nickname" />
+        <result property="providerId" column="provider_id" />
+        <result property="email" column="email" />
+    </resultMap>
+    <insert id="insertUser" parameterType="knitshow.fos.entity.UserEntity">
+        insert into user_tb
+        values (0, #{oauth2Id}, #{nickname}, #{providerId}, null)
+    </insert>
+    <select id="findUserByOAuth2Id" resultMap="userMap">
+        select
+            ut.user_id,
+            ut.oauth2_id,
+            ut.nickname,
+            ut.email,
+            pt.provider_id
+        from
+            user_tb ut
+            left outer join provider_tb pt on(ut.provider_id = pt.provider_id)
+        where
+            ut.oauth2_id = #{id}
+    </select>
+    <select id="findUserByEmail" resultMap="userMap">
+        select
+            user_id,
+            oauth2_id,
+            nickname,
+            email,
+            provider_id
+        from
+            user_tb ut
+            left outer join provider_tb pt on(ut.provider_id = pt.provider_id)
+        where
+            ut.email = #{email}
+    </select>
+</mapper>

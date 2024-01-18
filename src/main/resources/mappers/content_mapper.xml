@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="knitshow.fos.repository.ContentMapper">
+    <resultMap id="contentMap" type="knitshow.fos.entity.ContentEntity">
+        <id property="contentId" column="content_id" />
+        <result property="userId" column="user_id" />
+        <result property="content" column="content" />
+        <result property="needleWeightId" column="needle_weight_id" />
+        <result property="needleTypeId" column="needle_type_id" />
+        <result property="foTypeId" column="fo_type_id" />
+    </resultMap>
+    <insert id="insertContent" parameterType="knitshow.fos.entity.ContentEntity">
+        insert into content_tb
+        values (0, #{userId}, #{content}, #{needleWeightId}, #{needleTypeId}, #{foTypeId})
+    </insert>
+</mapper>

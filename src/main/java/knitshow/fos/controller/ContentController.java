@@ -27,4 +27,9 @@ public class ContentController {
     public ResponseEntity<?> getContent() {
         return ResponseEntity.ok().body(contentService.getContentList());
     }
+
+    @GetMapping("/content/category")
+    public ResponseEntity<?> getCategoryList () {
+        return ResponseEntity.ok().body(contentService.getCategoryList());
+    }
 }

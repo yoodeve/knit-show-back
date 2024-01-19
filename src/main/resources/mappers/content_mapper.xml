@@ -19,6 +19,7 @@
         <result property="needleTypeName" column="needle_type_name" />
         <result property="foTypeName" column="fo_type_name" />
     </resultMap>
+
     <insert id="insertContent" parameterType="knitshow.fos.entity.ContentEntity">
         insert into content_tb
         values (0, #{userId}, #{content}, #{needleWeightId}, #{needleTypeId}, #{foTypeId})
@@ -38,4 +39,23 @@
             left outer join needle_type_tb ntt on(ct.needle_type_id = ntt.needle_type_id)
             left outer join fo_type_tb ftt on(ct.fo_type_id = ftt.fo_type_id);
     </select>
+    <select id="getFoTypeList" resultType="java.lang.String">
+        SELECT
+            fo_type_name
+        FROM
+            fo_type_tb
+    </select>
+    <select id="getTypeList" resultType="java.lang.String">
+        SELECT
+            needle_type_name
+        FROM
+            needle_type_tb
+    </select>
+    <select id="getWeightList" resultType="java.lang.String">
+        SELECT
+            needle_size
+        FROM
+            needle_size_tb
+    </select>
+
 </mapper>

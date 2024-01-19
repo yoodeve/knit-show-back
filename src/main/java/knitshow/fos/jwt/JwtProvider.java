@@ -60,7 +60,10 @@ public class JwtProvider {
     }
 
     public Claims getClaims(String token) {
-        return Jwts.parserBuilder()
+        if(token == null) {
+            return null;
+        }
+            return Jwts.parserBuilder()
                     .setSigningKey(key)
                     .build()
                     .parseClaimsJws(token)

@@ -24,6 +24,10 @@
         insert into content_tb
         values (0, #{userId}, #{content}, #{needleWeightId}, #{needleTypeId}, #{foTypeId})
     </insert>
+    <insert id="insertImage" parameterType="knitshow.fos.entity.ImageEntity">
+        insert into image_tb
+        values(0, #{contentId}, #{imageUrl})
+    </insert>
     <select id="getContentList" resultMap="contentRespMap">
         SELECT
             content_id,

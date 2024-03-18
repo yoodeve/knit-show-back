@@ -1,6 +1,7 @@
 package knitshow.fos.controller;
 
 import knitshow.fos.dto.ContentDto;
+import knitshow.fos.dto.ImageReqDto;
 import knitshow.fos.service.ContentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -32,4 +33,10 @@ public class ContentController {
     public ResponseEntity<?> getCategoryList () {
         return ResponseEntity.ok().body(contentService.getCategoryList());
     }
+
+    @PostMapping("/save/image")
+    public ResponseEntity<?> saveImage(@RequestBody ImageReqDto dto) {
+        return ResponseEntity.ok().body(contentService.saveImage(dto));
+    }
+
 }

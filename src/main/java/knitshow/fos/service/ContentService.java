@@ -1,14 +1,13 @@
 package knitshow.fos.service;
 
-import knitshow.fos.dto.CategoryRespDto;
 import knitshow.fos.dto.ContentDto;
 import knitshow.fos.dto.ContentRespDto;
-import knitshow.fos.entity.ContentCategoryEntity;
+import knitshow.fos.dto.ImageReqDto;
 import knitshow.fos.entity.ContentEntity;
+import knitshow.fos.entity.ImageEntity;
 import knitshow.fos.repository.ContentMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,8 +21,12 @@ public class ContentService {
 
     public boolean saveContent (ContentDto dto) {
         ContentEntity entity = dto.toEntity();
-        System.out.println(entity);
         return contentMapper.insertContent(entity) > 0;
+    }
+
+    public boolean saveImage (ImageReqDto dto) {
+        ImageEntity entity = dto.toEntity();
+        return contentMapper.insertImage(entity) > 0;
     }
 
     public List<ContentRespDto> getContentList () {

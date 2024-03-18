@@ -5,6 +5,7 @@ import knitshow.fos.dto.ContentRespDto;
 import knitshow.fos.entity.ContentCategoryEntity;
 import knitshow.fos.entity.ContentEntity;
 import knitshow.fos.entity.ContentRespDtoEntity;
+import knitshow.fos.entity.ImageEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -17,5 +18,5 @@ public interface ContentMapper {
     public List<String> getWeightList();
     public List<String> getTypeList();
     public List<String> getFoTypeList();
-
+    public int insertImage(ImageEntity entity);
 }
